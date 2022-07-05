@@ -37,7 +37,7 @@ async function fetchLinks() {
     group_id: group_id,
   }
 
-  await axios.get(`http://localhost:8080/api/getDons`, { params: getMembers })
+  await axios.get(`http://jagerente.xyz/api/getDons`, { params: getMembers })
     .then(response => {
       donuts.value = response.data;
     })
