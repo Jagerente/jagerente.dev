@@ -2,27 +2,29 @@
   <div class="container">
     <h1 class="container__header">VK Donuts</h1>
     <div class="container__body">
-      <p
-        v-for="donut in donuts"
-        class="donut"
-      >{{ donut }}</p>
+      <ul>
+        <li
+          v-for="donut in donuts"
+          class="donut"
+        >{{ donut }}</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import type { Ref } from 'vue'
+import type { Ref } from 'vue';
 import axios from 'axios';
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router';
 const route = useRoute();
 
 type GetMembers = {
   access_token,
   group_id,
-}
+};
 
-let donuts: Ref<string[]> = ref([])
+let donuts: Ref<string[]> = ref([]);
 
 
 async function fetchLinks() {
@@ -35,40 +37,42 @@ async function fetchLinks() {
   const getMembers: GetMembers = {
     access_token: access_token,
     group_id: group_id,
-  }
+  };
 
-  await axios.get(`https://jagerente.xyz/api/getDons`, { params: getMembers })
+  await axios.get(import.meta.env.VITE_API_HOST + `/api/getDons`, { params: getMembers })
     .then(response => {
       donuts.value = response.data;
     })
     .catch(error => {
       console.log(error);
-    })
+    });
 }
 
 onMounted(() => {
   fetchLinks();
-})
+});
 </script>
 
 <style lang="scss" scoped>
 .container {
-  padding: 1rem;
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-  box-sizing: border-box;
-  height: 100vh;
-
   &__header {
+    margin-top: 1rem;
     text-align: center;
     font-size: 3rem;
   }
 
   &__body {
+    column-count: 3;
+    text-align: center;
     max-width: $lg;
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
     padding: 50px 0;
+  }
+
+  li {
+    user-select: text;
   }
 }
 

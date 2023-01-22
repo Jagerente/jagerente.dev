@@ -1,24 +1,24 @@
 <template>
   <div class="container">
-    <h1 class="container__header">Jagerente</h1>
-    <div class="container__body">
+    <h1 class="container__header">Contacts:</h1>
+    <nav class="container__body">
       <button
         v-for="link in links"
         class="button"
         @click="openUrl(link.url)"
       >{{ link.title }}</button>
-    </div>
+    </nav>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import type { Ref } from 'vue'
+import type { Ref } from 'vue';
 import axios from 'axios';
 
-type Link = { title: string, url: string }
+type Link = { title: string, url: string; };
 
-let links: Ref<Link[]> = ref([])
+let links: Ref<Link[]> = ref([]);
 
 async function fetchLinks() {
   await axios.get(`/links.json`)
@@ -27,25 +27,20 @@ async function fetchLinks() {
     })
     .catch(error => {
       console.log(error);
-    })
+    });
 }
 
 function openUrl(url) {
-  window.open(url, 'blank')
+  window.open(url, 'blank');
 }
 
 onMounted(() => {
   fetchLinks();
-})
+});
 </script>
 
 <style lang="scss" scoped>
 .container {
-  padding: 1rem;
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-  box-sizing: border-box;
-  height: 100vh;
-
   &__header {
     text-align: center;
     font-size: 3rem;
@@ -56,12 +51,11 @@ onMounted(() => {
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;
-    padding: 50px 0;
+    padding: 2rem 0;
   }
 }
 
 .button {
-
   display: block;
   margin: 0 auto;
   background-color: white;
@@ -81,7 +75,7 @@ onMounted(() => {
   }
 
   &+& {
-    margin-top: 2rem;
+    margin-top: 1.75rem;
   }
 }
 </style>
