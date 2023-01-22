@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "tsparticles": "^2.8.0",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.16"
+    "vue-router": "^4.0.16",
+    "vue3-particles": "^2.8.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
