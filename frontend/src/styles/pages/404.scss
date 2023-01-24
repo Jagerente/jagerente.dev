@@ -1,0 +1,15 @@
+.container {
+    margin: 0 auto;
+    padding: 5rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    &__text {
+        font-size: 4rem;
+        text-align: center;
+    }
+    img {
+        margin: 0 auto;
+        width: 14rem;
+    }
+}

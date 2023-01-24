@@ -1,0 +1,40 @@
+@import "../utility/vars.scss";
+
+.container {
+    &__header {
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    &__body {
+        max-width: $lg;
+        margin: 2rem auto;
+        flex-direction: column;
+    }
+}
+
+.button {
+    width: min-content;
+    text-decoration-line: none;
+    display: block;
+    margin: 0 auto;
+    background-color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+
+    font-family: $mainFontFamily;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #333;
+    box-shadow: 0 0 15px black;
+
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 0 15px * 2 black;
+    }
+
+    & + & {
+        margin-top: 1.75rem;
+    }
+}
