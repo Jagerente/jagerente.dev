@@ -1,0 +1,26 @@
+@use "../utility/vars" as *;
+
+.container {
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    font-family: $mainFontFamily;
+    color: $text-color;
+
+    &__text {
+        font-size: $text-4xl;
+        text-align: center;
+        color: $text-muted;
+
+        @media (max-width: $sm) {
+            font-size: $text-xl;
+        }
+    }
+
+    &__image {
+        margin: 0 auto;
+        width: 14rem;
+    }
+}

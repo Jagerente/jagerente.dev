@@ -1,0 +1,33 @@
+---
+import "../styles/components/link-cards.scss";
+import SocialIcons from "./icons/SocialIcons.astro";
+
+type Link = { title: string; displayName: string; url: string };
+
+import untypedData from "../assets/links.json";
+
+const links: Link[] = untypedData;
+---
+
+<nav aria-label="Main navigation">
+    <ul class="link-cards">
+        {
+            links.map((link) => {
+                const isExternal = link.url.startsWith("http");
+                return (
+                <li class="link-cards__item">
+                    <a
+                        class="link-card"
+                        href={link.url}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                    >
+                        <SocialIcons name={link.title} class="link-card__icon" />
+                        <span class="link-card__title">{link.displayName}</span>
+                    </a>
+                </li>
+                );
+            })
+        }
+    </ul>
+</nav>

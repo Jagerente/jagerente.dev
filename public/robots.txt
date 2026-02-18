@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /projects
+
+Sitemap: https://jagerente.dev/sitemap-index.xml

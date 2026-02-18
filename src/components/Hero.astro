@@ -1,0 +1,27 @@
+---
+import "../styles/components/hero.scss";
+
+const isHome = Astro.url.pathname === "/";
+---
+
+{isHome ? (
+    <div class="hero hero--static">
+        <img class="hero__logo" src="/favicon.png" alt="Jagerente" />
+        <h1 class="hero__title">
+            {Array.from("Jagerente").map((letter, i) => (
+                <span class="hero__letter" style={`--i: ${i}`}>{letter}</span>
+            ))}
+        </h1>
+        <p class="hero__tagline">Quit? Don't quit? Noodles!</p>
+    </div>
+) : (
+    <a href="/" class="hero hero--link">
+        <img class="hero__logo" src="/favicon.png" alt="Jagerente" />
+        <h1 class="hero__title">
+            {Array.from("Jagerente").map((letter, i) => (
+                <span class="hero__letter" style={`--i: ${i}`}>{letter}</span>
+            ))}
+        </h1>
+        <p class="hero__tagline">Quit? Don't quit? Noodles!</p>
+    </a>
+)}

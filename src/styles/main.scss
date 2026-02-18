@@ -1,0 +1,77 @@
+@use "./utility/reset";
+@use "./utility/fonts";
+@use "./utility/vars" as *;
+@use "sass:color";
+
+html {
+    color-scheme: dark;
+}
+
+.page {
+    font-family: $mainFontFamily;
+    color: $text-color;
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $sm) {
+        padding: 1rem 0.75rem;
+    }
+
+    &__main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__mesh {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.15;
+        background-image:
+            linear-gradient($mesh-color 1px, transparent 1px),
+            linear-gradient(90deg, $mesh-color 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+}
+
+.page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: radial-gradient(
+        ellipse at center,
+        $background 0%,
+        $background-edge 50%,
+        color.adjust($background-edge, $lightness: -5%) 100%
+    );
+}
+
+.page::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse 80% 60% at 30% 20%, $nebula-blue 0%, transparent 50%),
+        radial-gradient(ellipse 70% 50% at 70% 80%, $nebula-teal 0%, transparent 50%),
+        radial-gradient(ellipse 60% 60% at 50% 50%, $nebula-pink 0%, transparent 55%);
+    pointer-events: none;
+}
+

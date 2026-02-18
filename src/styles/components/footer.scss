@@ -1,0 +1,10 @@
+@use "../utility/vars" as *;
+
+.footer {
+    padding: 1.5rem;
+    text-align: center;
+    color: $text-muted;
+    margin-top: auto;
+    font-family: $mainFontFamily;
+    font-size: $text-sm;
+}

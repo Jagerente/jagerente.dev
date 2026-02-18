@@ -1,0 +1,45 @@
+@use "../utility/vars" as *;
+
+.hub {
+    width: clamp(280px, 45%, 360px);
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: $background-glass-light;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid $accent;
+    border-radius: 24px;
+    box-shadow:
+        0 0 20px $neon-glow,
+        0 0 40px rgba(255, 0, 127, 0.2),
+        inset 0 0 60px rgba(255, 0, 127, 0.05);
+    animation: hub-border-twitch 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    @media (max-width: $sm) {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@keyframes hub-border-twitch {
+    0%, 100% {
+        box-shadow:
+            0 0 20px $neon-glow,
+            0 0 40px rgba(255, 0, 127, 0.2),
+            inset 0 0 60px rgba(255, 0, 127, 0.05);
+    }
+    33% {
+        box-shadow:
+            0 0 23px rgba(255, 0, 127, 0.55),
+            0 0 46px rgba(255, 0, 127, 0.26),
+            inset 0 0 60px rgba(255, 0, 127, 0.05);
+    }
+    66% {
+        box-shadow:
+            0 0 18px rgba(255, 0, 127, 0.45),
+            0 0 36px rgba(255, 0, 127, 0.16),
+            inset 0 0 60px rgba(255, 0, 127, 0.05);
+    }
+}

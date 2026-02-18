@@ -1,0 +1,69 @@
+@use "../utility/vars" as *;
+
+.hero-mini {
+    align-self: flex-start;
+    margin: 0 0 2rem 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: $text-color;
+    z-index: 10;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+        transform: scale(1.03);
+        background-color: rgba(10, 14, 26, 0.85);
+        border-color: $accent-60;
+        box-shadow: 0 0 24px rgba(255, 0, 127, 0.25), inset 0 0 0 1px rgba(255, 0, 127, 0.2);
+    }
+
+    &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 2px;
+    }
+
+    &__logo {
+        height: 5rem;
+        width: auto;
+        flex-shrink: 0;
+        transition: filter 0.2s ease;
+    }
+
+    &:hover &__logo {
+        filter: drop-shadow(0 0 4px $accent-60);
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    &__title {
+        font-family: $mainFontFamily;
+        font-size: $text-xl;
+        font-weight: 700;
+        color: $text-color;
+    }
+
+    &__tagline {
+        font-family: $mainFontFamily;
+        font-size: $text-base;
+        color: $text-muted;
+        font-style: italic;
+    }
+
+    @media (max-width: $sm) {
+        align-self: center;
+        margin: 0.5rem 0 2rem 0;
+
+        &__logo {
+            height: 4rem;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+---
+import "../styles/components/project-cards.scss";
+import SocialIcons from "./icons/SocialIcons.astro";
+
+import { getCollection } from "astro:content";
+
+const entries = await getCollection("projects");
+
+const order = [
+	"media-platform",
+	"guccigangmod",
+	"aottg2",
+	"genshin-academy",
+	"v-academy",
+	"aottg2cl-vsce",
+	"portal2-aottg2",
+	"gocfg",
+];
+const projects = order
+	.map((slug) => entries.find((e) => e.slug === slug))
+	.filter(Boolean);
+
+const iconMap: Record<string, string> = {
+	github: "GitHub",
+	youtube: "YouTube",
+	work: "Work",
+};
+---
+
+<section aria-label="Projects">
+	<ul class="project-cards">
+		{
+			projects.map((entry) => (
+				<li class="project-cards__item">
+					<a class="project-card" href={`/projects/${entry.slug}`}>
+						<div class="project-card__header">
+							<SocialIcons name={iconMap[entry.data.type] ?? "GitHub"} class="project-card__icon" />
+							<span class="project-card__title">{entry.data.title}</span>
+						</div>
+						<p class="project-card__description">{entry.data.description}</p>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</section>

@@ -1,0 +1,56 @@
+@use "../utility/vars" as *;
+
+.projects-page {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: $background-glass-light;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid $accent;
+    border-radius: 24px;
+    box-shadow:
+        0 0 20px $neon-glow,
+        0 0 40px rgba(255, 0, 127, 0.2),
+        inset 0 0 60px rgba(255, 0, 127, 0.05);
+
+    @media (max-width: $sm) {
+        padding: 1.5rem 1rem;
+    }
+
+    &__back {
+        align-self: flex-start;
+        font-family: $mainFontFamily;
+        font-size: $text-sm;
+        color: $text-muted;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $accent;
+        }
+
+        &:focus-visible {
+            outline: 2px solid $accent;
+            outline-offset: 2px;
+        }
+    }
+
+    &__title {
+        font-family: $mainFontFamily;
+        font-size: $text-2xl;
+        font-weight: 700;
+        color: $text-color;
+        margin: 0;
+    }
+
+    &__subtitle {
+        font-family: $mainFontFamily;
+        font-size: $text-base;
+        color: $text-muted;
+        margin: 0;
+    }
+}

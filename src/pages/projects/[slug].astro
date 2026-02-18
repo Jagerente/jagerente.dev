@@ -1,0 +1,60 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SocialIcons from "../../components/icons/SocialIcons.astro";
+import "../../styles/pages/project-detail.scss";
+
+import { getEntry } from "astro:content";
+
+const { slug } = Astro.params;
+if (!slug) {
+	return Astro.redirect("/404");
+}
+
+const entry = await getEntry("projects", slug);
+if (!entry) {
+	return Astro.redirect("/404");
+}
+
+const { Content } = await entry.render();
+
+const iconMap: Record<string, string> = {
+	github: "GitHub",
+	youtube: "YouTube",
+	work: "Work",
+};
+---
+
+<Layout title={`${entry.data.title} — Jagerente`} description={entry.data.description} robots="noindex, nofollow">
+	<article class="project-detail">
+		<a href="/projects" class="project-detail__back">← Back to Projects</a>
+
+		<header class="project-detail__header">
+			<SocialIcons name={iconMap[entry.data.type] ?? "GitHub"} class="project-detail__icon" />
+			<h1 class="project-detail__title">{entry.data.title}</h1>
+		</header>
+
+		<div class="project-detail__content">
+			<Content />
+		</div>
+
+		<section class="project-detail__references">
+			<h2 class="project-detail__refs-title">References</h2>
+			<ul class="project-detail__refs-list">
+				{
+					entry.data.references.map((ref) => (
+						<li>
+							<a
+								href={ref.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="project-detail__ref-link"
+							>
+								{ref.title} →
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</article>
+</Layout>

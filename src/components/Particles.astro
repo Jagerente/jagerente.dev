@@ -1,0 +1,18 @@
+<style>
+    .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -100;
+    }
+</style>
+
+<script src="/scripts/particles.js" is:inline></script>
+<div id="particles" class="particles" aria-hidden="true"></div>
+<script>
+    import { setParticles } from "../scripts/main.js";
+
+    window.addEventListener("load", setParticles);
+</script>

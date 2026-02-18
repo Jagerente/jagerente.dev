@@ -1,0 +1,60 @@
+@use "../utility/vars" as *;
+
+.link-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &__item {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: $background-glass;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border: 1px solid $accent-40;
+    box-shadow: 0 0 12px rgba(255, 0, 127, 0.15);
+    text-decoration: none;
+    color: $text-color;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &__icon {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        color: $text-color;
+        transition: color 0.2s ease, filter 0.2s ease;
+    }
+
+    &__title {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        font-size: $text-lg;
+    }
+
+    &:hover {
+        border-color: $accent;
+        box-shadow: 0 0 20px $accent-40;
+
+        .link-card__icon {
+            color: $accent;
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid $accent;
+        outline-offset: 2px;
+    }
+}
